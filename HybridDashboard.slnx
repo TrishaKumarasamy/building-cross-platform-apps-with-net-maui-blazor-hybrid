@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="HybridDashboard/HybridDashboard.Shared/HybridDashboard.Shared.csproj" />
+  <Project Path="HybridDashboard/HybridDashboard.Web/HybridDashboard.Web.csproj" />
+  <Project Path="HybridDashboard/HybridDashboard/HybridDashboard.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

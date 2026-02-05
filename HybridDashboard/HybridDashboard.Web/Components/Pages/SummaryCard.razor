@@ -1,0 +1,169 @@
+﻿@using Syncfusion.Blazor.Cards
+@inject HybridDashboard.Shared.ICardPresenter CardPresenter
+
+<div class="summary-wrapper">
+    <div class="summary-header">
+        <div class="summary-title">Business Analytics Dashboard</div>
+    </div>
+
+    <div class="summary-grid">
+        <!-- Card 1 -->
+        <SfCard CssClass="summary-card">
+            <CardHeader>
+                <div class="card-header">
+                    <div class="card-label">Total Revenue</div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div class="card-main">
+                    <div class="card-value">@current?.TotalRevenue</div>
+                    <img class="card-img" src="@current?.RevenueImage" alt="Revenue" />
+                </div>
+            </CardContent>
+        </SfCard>
+
+        <!-- Card 2 -->
+        <SfCard CssClass="summary-card">
+            <CardHeader>
+                <div class="card-header">
+                    <div class="card-label">Total Orders</div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div class="card-main">
+                    <div class="card-value">@current?.TotalOrders</div>
+                    <img class="card-img" src="@current?.OrdersImage" alt="Orders" />
+                </div>
+            </CardContent>
+        </SfCard>
+
+        <!-- Card 3 -->
+        <SfCard CssClass="summary-card">
+            <CardHeader>
+                <div class="card-header">
+                    <div class="card-label">Active Customers</div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div class="card-main">
+                    <div class="card-value">@current?.ActiveCustomers</div>
+                    <img class="card-img" src="@current?.CustomersImage" alt="Customers" />
+                </div>
+            </CardContent>
+        </SfCard>
+
+        <!-- Card 4 -->
+        <SfCard CssClass="summary-card">
+            <CardHeader>
+                <div class="card-header">
+                    <div class="card-label">Customer Retention</div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div class="card-main">
+                    <div class="card-value">@current?.CustomerRetentionRate</div>
+                    <img class="card-img" src="@current?.RetentionImage" alt="Retention" />
+                </div>
+            </CardContent>
+        </SfCard>
+    </div>
+</div>
+
+<style>
+    .summary-wrapper {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .summary-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .summary-title {
+        font-weight: 500;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .summary-card .e-card {
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        border: 1px solid #E0E0E0;
+        height: 100%;
+    }
+
+        .summary-card .e-card .e-card-header {
+            padding: 10px 14px;
+            border-bottom: 0;
+            background: transparent;
+        }
+
+        .summary-card .e-card .e-card-content {
+            padding: 12px 14px;
+        }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .card-label {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .card-main {
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        gap: 20px;
+    }
+
+    .card-value {
+        font-size: 22px;
+        font-weight: 700;
+        color: #222;
+        white-space: nowrap;
+    }
+
+    .card-img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+    }
+</style>
+
+@code {
+    private HybridDashboard.Shared.DashboardSummary? current;
+
+    protected override void OnInitialized()
+    {
+        current = CardPresenter.CurrentSummary;
+        CardPresenter.SummaryUpdated += OnSummaryUpdated;
+    }
+
+    private void OnSummaryUpdated(HybridDashboard.Shared.DashboardSummary summary)
+    {
+        current = summary;
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        CardPresenter.SummaryUpdated -= OnSummaryUpdated;
+    }
+}

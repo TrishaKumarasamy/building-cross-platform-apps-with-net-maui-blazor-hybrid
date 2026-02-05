@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncCards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
+             xmlns:local="clr-namespace:HybridDashboard"
+             xmlns:shared="clr-namespace:HybridDashboard.Shared;assembly=HybridDashboard.Shared"
+             x:Class="HybridDashboard.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ImagePathConverter x:Key="ImagePathConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, *" ColumnDefinitions="*">
+        <!-- Title -->
+        <StackLayout Grid.Row="0" Padding="12,12,12,6">
+            <Label Text="Business Analytics Dashboard"
+                   FontSize="18" />
+        </StackLayout>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*,*" ColumnSpacing="12" Padding="12,6">
+            <syncCards:SfCardView Grid.Column="0" CornerRadius="8" Padding="12" BackgroundColor="White">
+                <StackLayout VerticalOptions="Center" Spacing="12">
+                    <Label Text="Total Revenue" FontSize="Body" HorizontalTextAlignment="Center" />
+                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                        <Label Text="{Binding CurrentSummary.TotalRevenue}" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center"/>
+                        <Image Source="{Binding CurrentSummary.RevenueImage, Converter={StaticResource ImagePathConverter}}"
+                               WidthRequest="64" HeightRequest="64" Aspect="AspectFit" />
+                    </StackLayout>
+                </StackLayout>
+            </syncCards:SfCardView>
+
+            <syncCards:SfCardView Grid.Column="1" CornerRadius="8" Padding="12" BackgroundColor="White">
+                <StackLayout VerticalOptions="Center" Spacing="12">
+                    <Label Text="Total Orders" FontSize="Body" HorizontalTextAlignment="Center" />
+                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                        <Label Text="{Binding CurrentSummary.TotalOrders}" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center"/>
+                        <Image Source="{Binding CurrentSummary.OrdersImage, Converter={StaticResource ImagePathConverter}}"
+                               WidthRequest="64" HeightRequest="64" Aspect="AspectFit" />
+                    </StackLayout>
+                </StackLayout>
+            </syncCards:SfCardView>
+
+            <syncCards:SfCardView Grid.Column="2" CornerRadius="8" Padding="12" BackgroundColor="White">
+                <StackLayout VerticalOptions="Center" Spacing="12">
+                    <Label Text="Active Customers" FontSize="Body" HorizontalTextAlignment="Center" />
+                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                        <Label Text="{Binding CurrentSummary.ActiveCustomers}" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center"/>
+                        <Image Source="{Binding CurrentSummary.CustomersImage, Converter={StaticResource ImagePathConverter}}"
+                               WidthRequest="64" HeightRequest="64" Aspect="AspectFit" />
+                    </StackLayout>
+                </StackLayout>
+            </syncCards:SfCardView>
+
+            <syncCards:SfCardView Grid.Column="3" CornerRadius="8" Padding="12" BackgroundColor="White">
+                <StackLayout VerticalOptions="Center" Spacing="12">
+                    <Label Text="Customer Retention" FontSize="Body" HorizontalTextAlignment="Center" />
+                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
+                        <Label Text="{Binding CurrentSummary.CustomerRetentionRate}" FontAttributes="Bold" FontSize="22" VerticalTextAlignment="Center"/>
+                        <Image Source="{Binding CurrentSummary.RetentionImage, Converter={StaticResource ImagePathConverter}}"
+                               WidthRequest="64" HeightRequest="64" Aspect="AspectFit" />
+                    </StackLayout>
+                </StackLayout>
+            </syncCards:SfCardView>
+        </Grid>
+
+        <BlazorWebView Grid.Row="2" HostPage="wwwroot/index.html" Margin="12">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type shared:Routes}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </Grid>
+</ContentPage>
