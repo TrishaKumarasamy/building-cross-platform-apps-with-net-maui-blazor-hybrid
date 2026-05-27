@@ -1,6 +1,6 @@
 # Hybrid Dashboard
 
-A comprehensive sample demonstrating cross-platform dashboard development using .NET MAUI Blazor Hybrid technology. Build once and deploy to native mobile apps (iOS, Android, macOS), desktop (Windows), and web using shared Razor components and a unified codebase.
+A comprehensive sample demonstrating cross-platform [dashboard](https://www.syncfusion.com/blazor-components/blazor-dashboard) development using .NET MAUI Blazor Hybrid technology. Build once and deploy to native mobile apps (iOS, Android, macOS), desktop (Windows), and web using shared Razor components and a unified codebase.
 
 ## Overview
 
@@ -52,7 +52,8 @@ dotnet run
 ```
 ## References
 
-- [Blazor DataGrid Documentation](https://blazor.syncfusion.com/documentation/datagrid/getting-started-with-web-app)
+- [Blazor Documentation](https://blazor.syncfusion.com/documentation/introduction)
+- [Blazor Dashboard Documentation](https://blazor.syncfusion.com/documentation/dashboard-layout/getting-started-with-web-app)
 - [Online Dashboard Demo](https://blazor.syncfusion.com/demos/dashboard-layout/overview?theme=fluent2)
-- [Blazor Documentation](https://learn.microsoft.com/en-us/aspnet/core/blazor)
+
 
