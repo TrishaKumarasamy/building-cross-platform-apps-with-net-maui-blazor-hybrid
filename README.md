@@ -4,7 +4,7 @@ A comprehensive sample demonstrating cross-platform dashboard development using 
 
 ## Overview
 
-**Hybrid Dashboard** demonstrates how to build a sophisticated business dashboard that runs on multiple platforms using .NET MAUI Blazor Hybrid. The application features interactive charts, data grids, and summary cards—all powered by Syncfusion components and shared across platforms through a Razor Class Library.
+**Hybrid Dashboard** demonstrates how to build a sophisticated business dashboard that runs on multiple platforms using .NET MAUI Blazor Hybrid. The application features interactive charts, data grids, and summary cards—all powered by components and shared across platforms through a Razor Class Library.
 - **Shared UI Components**: Razor Class Library (`HybridDashboard.Shared`) contains all dashboard UI components
 - **Platform-Specific Services**: Dependency injection pattern for platform-specific implementations
 - **Multi-target Support**: Single codebase targeting Android, iOS, macOS, Windows, and web
@@ -13,8 +13,8 @@ A comprehensive sample demonstrating cross-platform dashboard development using 
 ## Features
 
 - **Multi-Platform Support** - Run on Android, iOS, macOS, Windows, and web with minimal platform-specific code
-- **Interactive Dashboards** - Rich data visualization with charts, grids, and summary cards using Syncfusion components
-- *Responsive Design** - Adaptive layouts that work perfectly on any screen size
+- **Interactive Dashboards** - Rich data visualization with charts, grids, and summary cards using components
+- **Responsive Design** - Adaptive layouts that work perfectly on any screen size
 - **Shared Components** - Razor components written once and shared across all platforms
 - **Extensible Architecture** - Platform-specific services via dependency injection
 - **Real-time Data** - Dashboard with sample business data (revenue, orders, products, customers)
